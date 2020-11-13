@@ -8,6 +8,8 @@ skinmesh is a simple React component that uses the facemesh model from [Tensorfl
 
 ## Use
 * Checkout the example folder
+* npm install && npm build in the parent directory
+* npm install && npm start in the example directory
 * The model may take some time to load. The output for any images captured during this period will be null.
 * I will add more customizations if there is interest.
 
