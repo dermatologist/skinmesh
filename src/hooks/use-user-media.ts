@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 
+export interface IMediaStream {
+    getTracks: any;
+}
 export function useUserMedia(requestedMedia) {
-    const [mediaStream, setMediaStream] = useState(null);
+    const [mediaStream, setMediaStream] = useState<IMediaStream | undefined>(undefined);
 
     useEffect(() => {
         async function enableVideoStream() {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia(
+                const stream:any = await navigator.mediaDevices.getUserMedia(
                     requestedMedia
                 );
                 setMediaStream(stream);
@@ -17,6 +20,7 @@ export function useUserMedia(requestedMedia) {
 
         if (!mediaStream) {
             enableVideoStream();
+            return mediaStream
         } else {
             return function cleanup() {
                 mediaStream.getTracks().forEach(track => {
