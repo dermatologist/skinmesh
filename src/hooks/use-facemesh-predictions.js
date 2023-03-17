@@ -17,7 +17,7 @@ export function useFaceMeshFmPredictions(videoRef) {
             const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
             const detectorConfig = {
                 runtime: 'mediapipe',
-                solutionPath: 'base/node_modules/@mediapipe/face_mesh',
+                solutionPath: 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
                 //'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
                 // or 'base/node_modules/@mediapipe/face_mesh' in npm.
             };
