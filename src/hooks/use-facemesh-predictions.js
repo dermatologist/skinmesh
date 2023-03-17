@@ -1,6 +1,9 @@
 import * as React from 'react';
-import * as tfjs from '@tensorflow/tfjs';
-import * as facemesh from '@tensorflow-models/facemesh';
+import '@mediapipe/face_mesh';
+import '@tensorflow/tfjs-core';
+// Register WebGL backend.
+import '@tensorflow/tfjs-backend-webgl';
+import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
 
 
 export function useFaceMeshFmPredictions(videoRef) {
@@ -10,9 +13,17 @@ export function useFaceMeshFmPredictions(videoRef) {
     const [fmPrediction, setFmPrediction] = React.useState(null);
     const loadFmModel = async () => {
         try {
-            await tfjs.setBackend('webgl');
-            // await tfjs.setBackend('wasm');
-            const loadedFmModel = await facemesh.load({ maxFaces: 1 });
+
+            const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
+            const detectorConfig = {
+                runtime: 'mediapipe',
+                solutionPath: 'base/node_modules/@mediapipe/face_mesh',
+                //'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh',
+                // or 'base/node_modules/@mediapipe/face_mesh' in npm.
+            };
+            const detector = await faceLandmarksDetection.createDetector(model, detectorConfig);
+
+            const loadedFmModel = detector;
 
             setLoading(false);
             setFmModel(loadedFmModel);
