@@ -22,20 +22,12 @@
   },
   "dependencies": {
     "@mediapipe/face_mesh": "0.4.1633559619",
-    "@tensorflow/tfjs-backend-webgl": "^4.2.0",
-    "@tensorflow/tfjs-core": "^4.2.0",
-    "@tensorflow/tfjs-converter": "^4.2.0",
     "@tensorflow-models/face-landmarks-detection": "^1.0.2",
+    "@tensorflow/tfjs-backend-webgl": "^3.14.0",
     "@types/react-measure": "^2.0.8",
     "react-is": "^18.2.0",
     "react-measure": "^2.5.2",
-    "react-scripts": "5.0.1",
     "styled-components": "^5.3.9"
-  },
-  "husky": {
-    "hooks": {
-      "//": "pre-commit tsdx lint"
-    }
   },
   "prettier": {
     "printWidth": 80,
@@ -67,6 +59,6 @@
     "size-limit": "^8.2.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.2"
+    "typescript": "^3.9.10"
   }
 }
